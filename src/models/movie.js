@@ -34,7 +34,7 @@ const MovieSchema = new mongoose.Schema({
     posterUrl : {
         type : String
     }
-});
+},{timestamps:true});
 
 const Movie = mongoose.model('Movie',MovieSchema);
 
