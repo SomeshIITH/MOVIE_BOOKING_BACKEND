@@ -14,13 +14,14 @@ const TheatreSchema = new mongoose.Schema({
         required : true
     },
     pincode : {
-        type : Number
+        type : Number,
+        required : true
     },
     address : {
-        type : String
+        type : String,
     },
     movies : {
-        type : [String],
+        type : [mongoose.Schema.Types.ObjectId],
         ref : 'Movie'
     }
 },{timestamps:true})
