@@ -5,6 +5,8 @@ import {createMovie,getMovie,getAllMovies,updateMovie,deleteMovie} from './../..
 
 import { createTheatre,getTheatre,getAllTheatres,updateTheatre,deleteTheatre,updateMoviesInTheatre,getAllMoviesInTheatre,checkMovieInTheatre} from './../../controllers/theatre-controller.js';
 
+import {signIn,signUp} from  './../../controllers/user-controller.js';
+
 
 router.post('/movie',createMovie);
 router.get('/movie/:id',getMovie);
@@ -22,6 +24,10 @@ router.patch('/theatre/:id',updateMoviesInTheatre);
 
 router.get('/theatre/:id/movies',getAllMoviesInTheatre);
 router.get('/theatre/:theatreId/movie/:movieId',checkMovieInTheatre);
+
+
+router.post('/user/signUp',signUp);
+router.get('/user/signIn',signIn);
 
 
 export default router;
