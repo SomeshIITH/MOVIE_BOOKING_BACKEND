@@ -45,6 +45,7 @@ UserSchema.pre('save',function(){ //pre hook , 'save' event means before saving 
     user.password = encryptedPassword;
 })  
 
+//model methods are available on instances of model
 UserSchema.methods.comparePassword = function(normalPassword){
     return bcrypt.compareSync(normalPassword,this.password);
 }
