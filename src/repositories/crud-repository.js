@@ -8,7 +8,7 @@ class CrudRepository{
             const result = await func();
             return result;
         }catch(error){
-            console.log("erorr")
+            // console.log("erorr")
             throw error;
         }
     }

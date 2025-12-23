@@ -104,6 +104,21 @@ class TheatreService{
             }
             return theatre.populate('movies');
         }catch(error){
+            if(error.name == 'CastError'){
+                throw new AppError(error.message,error.name,"Please recheck ids u entered",StatusCodes.NOT_FOUND);
+            }
+            throw error;
+        }
+    }
+
+    async getAllMoviesInTheatre(theatreId){
+        try{
+            const theatre = await Theatre.findById(theatreId,{name : 1, movies : 1}).populate('movies');
+            return theatre;
+        }catch(error){
+            if(error.name == 'CastError'){
+                throw new AppError(error.message,error.name,"Please recheck ids u entered",StatusCodes.NOT_FOUND);
+            }
             throw error;
         }
     }

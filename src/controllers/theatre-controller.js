@@ -122,4 +122,25 @@ const updateMoviesInTheatre = async (req,res)=>{
     }
 }
 
-export {deleteTheatre,updateTheatre,getAllTheatres,getTheatre,createTheatre,updateMoviesInTheatre};
+const getAllMoviesInTheatre = async (req,res)=>{
+    try{
+        const result = await theatreService.getAllMoviesInTheatre(req.params.id);
+        return res.status(StatusCodes.OK).json({
+            data : result,
+            success : true,
+            err : {},
+            message : "Theatre get successfully"
+        })
+    }catch(error){
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            data : {},
+            success : false,
+            err : error,
+            message : error.message
+        })
+    }
+}
+
+export {deleteTheatre,updateTheatre,getAllTheatres,getTheatre,createTheatre,updateMoviesInTheatre
+    ,getAllMoviesInTheatre
+};

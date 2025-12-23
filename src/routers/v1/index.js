@@ -3,7 +3,7 @@ const router = express.Router();
 
 import {createMovie,getMovie,getAllMovies,updateMovie,deleteMovie} from './../../controllers/movie-controller.js';
 
-import { createTheatre,getTheatre,getAllTheatres,updateTheatre,deleteTheatre,updateMoviesInTheatre} from './../../controllers/theatre-controller.js';
+import { createTheatre,getTheatre,getAllTheatres,updateTheatre,deleteTheatre,updateMoviesInTheatre,getAllMoviesInTheatre} from './../../controllers/theatre-controller.js';
 
 
 router.post('/movie',createMovie);
@@ -19,6 +19,8 @@ router.get('/theatres',getAllTheatres);
 router.put('/theatre/:id',updateTheatre);
 router.delete('/theatre/:id',deleteTheatre);
 router.patch('/theatre/:id',updateMoviesInTheatre); 
+
+router.get('/theatre/:id/movies',getAllMoviesInTheatre);
 
 
 export default router;
