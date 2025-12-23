@@ -122,6 +122,21 @@ class TheatreService{
             throw error;
         }
     }
+
+    async checkMovieInTheatre(theatreId,movieId){
+        try{
+            const theatre = await Theatre.findById(theatreId);
+            if(!theatre){
+               throw new AppError("No such theatre found for the given id","Invalid Id","Please recheck id you entered",StatusCodes.NOT_FOUND);
+            }
+            return theatre.movies.indexOf(movieId)!=-1;
+        }catch(error){
+            if(error.name == 'CastError'){
+                throw new AppError(error.message,error.name,"Please recheck ids u entered",StatusCodes.NOT_FOUND);
+            }
+            throw error;
+        }
+    }
 }
 
 export default TheatreService;

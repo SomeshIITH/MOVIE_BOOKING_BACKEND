@@ -132,7 +132,7 @@ const getAllMoviesInTheatre = async (req,res)=>{
             message : "Theatre get successfully"
         })
     }catch(error){
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+        return res.status(error.statusCode).json({
             data : {},
             success : false,
             err : error,
@@ -141,6 +141,26 @@ const getAllMoviesInTheatre = async (req,res)=>{
     }
 }
 
+const checkMovieInTheatre = async (req,res)=>{
+    try{
+        const result = await theatreService.checkMovieInTheatre(req.params.theatreId,req.params.movieId);
+        return res.status(StatusCodes.OK).json({
+            data : result,
+            success : true,
+            err : {},
+            message : result==true ? "movie present" : "movie not present in theatre"
+        })
+    }catch(error){
+        return res.status(error.statusCode).json({
+            data : {},
+            success : false,
+            err : error,
+            message : error.message
+        })
+    }
+}
+
+
 export {deleteTheatre,updateTheatre,getAllTheatres,getTheatre,createTheatre,updateMoviesInTheatre
-    ,getAllMoviesInTheatre
+    ,getAllMoviesInTheatre,checkMovieInTheatre
 };
