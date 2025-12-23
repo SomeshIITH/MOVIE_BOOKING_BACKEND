@@ -13,8 +13,8 @@ app.use('/api',apiRoutes);
 import {connect} from './config/database-config.js';
 
 
-import MovieService from './services/movie-service.js';
-const movieservice = new MovieService();
+// import MovieService from './services/movie-service.js';
+// const movieservice = new MovieService();
 
 const StartServer = async ()=>{
     app.listen(PORT,async ()=>{

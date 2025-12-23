@@ -5,3 +5,4 @@ import bcrypt from 'bcrypt';
 
 export const PORT = process.env.PORT;
 export const SALT = bcrypt.genSaltSync(10);
+export const JWT_SECRETKEY = process.env.JWT_SECRETKEY;

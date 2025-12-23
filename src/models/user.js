@@ -39,7 +39,7 @@ const UserSchema = new mongoose.Schema({
     }
 },{timestamps: true});
 
-UserSchema.pre('save',function(){
+UserSchema.pre('save',function(){ //pre hook , 'save' event means before saving user in db encrypt password
     const user = this;
     const encryptedPassword = bcrypt.hashSync(user.password,SALT);
     user.password = encryptedPassword;
